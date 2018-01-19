@@ -14,6 +14,12 @@ Draw.Poly = Draw.Line.extend({
 
         // get coordinates, create the leaflet shape and add it to the map
         const coords = this._layer.getLatLngs();
+
+        // prevent finishing polygon if it just has less then 3 vertexes
+        if (coords.length < 3){
+            return;
+        }
+
         const polygonLayer = L.polygon(coords, this.options.pathOptions).addTo(this._map);
 
         // disable drawing
