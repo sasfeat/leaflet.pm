@@ -1,3 +1,4 @@
+import kinks from '@turf/kinks';
 import Draw from './L.PM.Draw';
 
 Draw.Poly = Draw.Line.extend({
@@ -9,6 +10,9 @@ Draw.Poly = Draw.Line.extend({
     _finishShape() {
         // if self intersection is not allowed, do not finish the shape!
         if (!this.options.allowSelfIntersection && this._doesSelfIntersect) {
+            this._layer.fire('pm:intersect', {
+                intersection: kinks(this._layer.toGeoJSON()),
+            });
             return;
         }
 

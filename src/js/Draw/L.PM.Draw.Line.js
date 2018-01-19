@@ -193,6 +193,9 @@ Draw.Line = Draw.extend({
     },
     _createVertex(e) {
         if (!this.options.allowSelfIntersection && this._doesSelfIntersect) {
+            this._layer.fire('pm:intersect', {
+                intersection: kinks(this._layer.toGeoJSON()),
+            });
             return;
         }
 
