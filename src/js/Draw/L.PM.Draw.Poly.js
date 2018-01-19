@@ -21,6 +21,7 @@ Draw.Poly = Draw.Line.extend({
 
         // prevent finishing polygon if it just has less then 3 vertexes
         if (coords.length < 3){
+            this._layer.fire('pm:fewvertexes');
             return;
         }
 
