@@ -208,6 +208,11 @@ Draw.Line = Draw.extend({
         // get coordinate for new vertex by hintMarker (cursor marker)
         const latlng = this._hintMarker.getLatLng();
 
+        if (latlng.equals(this._layer.getLatLngs().slice(-1)[0])){
+            return;
+        }
+
+
         // check if the first and this vertex have the same latlng
         if (latlng.equals(this._layer.getLatLngs()[0])) {
             // yes? finish the polygon
