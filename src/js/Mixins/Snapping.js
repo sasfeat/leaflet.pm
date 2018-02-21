@@ -202,6 +202,8 @@ const SnapMixin = {
         // finally remove everything that's leaflet.pm specific temporary stuff
         layers = layers.filter(layer => !layer._pmTempLayer);
 
+        layers = layers.filter(layer => !layer.options.pmIgnore);
+
         // save snaplist from layers and the other snap layers added from other classes/scripts
         if (this._otherSnapLayers) {
             this._snapList = layers.concat(this._otherSnapLayers);
