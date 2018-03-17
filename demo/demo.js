@@ -19,6 +19,16 @@ const mapboxTiles3 = L.tileLayer(`https://api.mapbox.com/styles/v1/mapbox/street
 const map2 = L.map('example2')
     .setView([51.505, -0.09], 13)
     .addLayer(mapboxTiles1);
+
+map2.on('pm:drawstart',function(e){
+    e.workingLayer.on('pm:intersect',function(ev){
+        console.log('intersected', ev);
+    });
+    e.workingLayer.on('pm:fewvertexes',function(ev){
+        console.log('intersected', ev);
+    });
+});
+
 const map3 = L.map('example3')
     .setView([51.505, -0.09], 13)
     .addLayer(mapboxTiles2);
@@ -151,15 +161,15 @@ const markerStyle = {
 map3.pm.enableDraw('Poly', {
     snappable: true,
     templineStyle: {
-        color: 'blue',
+        color: 'green',
     },
     hintlineStyle: {
-        color: 'blue',
+        color: 'green',
         dashArray: [5, 5],
     },
     pathOptions: {
-        color: 'red',
-        fillColor: 'orange',
+        color: 'green',
+        fillColor: 'green',
         fillOpacity: 0.7,
     },
     markerStyle: markerStyle,

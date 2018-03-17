@@ -181,15 +181,15 @@ Draw.Line = Draw.extend({
         this._doesSelfIntersect = selfIntersection.features.length > 0;
 
         // change the style based on self intersection
-        if (this._doesSelfIntersect) {
-            this._hintline.setStyle({
-                color: 'red',
-            });
-        } else {
-            this._hintline.setStyle({
-                color: '#3388ff',
-            });
-        }
+        // if (this._doesSelfIntersect) {
+        //     this._hintline.setStyle({
+        //         color: 'red',
+        //     });
+        // } else {
+        //     this._hintline.setStyle({
+        //         color: '#3388ff',
+        //     });
+        // }
     },
     _createVertex(e) {
         if (!this.options.allowSelfIntersection && this._doesSelfIntersect) {
